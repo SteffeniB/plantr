@@ -31,13 +31,12 @@ const Vegetable = db.define('vegetable', {
   },
 });
 
-Plot.belongsTo(Gardener)
-Gardener.hasMany(Plot)
+Plot.belongsTo(Gardener);
+Gardener.hasMany(Plot);
 
-Vegetable.belongsToMany(Plot, {through: 'vegetable_plot'})
-Plot.belongsToMany(Vegetable, {through: 'vegetable_plot'})
+Vegetable.belongsToMany(Plot, { through: 'vegetable_plot' });
+Plot.belongsToMany(Vegetable, { through: 'vegetable_plot' });
 
-Gardener.belongsTo(Vegetable, {as: 'favorite_vegetable'})
+Gardener.belongsTo(Vegetable, { as: 'favorite_vegetable' });
 
-
-module.exports = db;
+module.exports = { db, Gardener, Plot, Vegetable };
